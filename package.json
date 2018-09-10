@@ -1,7 +1,7 @@
 {
   "name": "rest-api",
-  "version": "1.0.0",
-  "description": "Simple restful api using crud principles",
+  "version": "0.1.0",
+  "description": "Simple restful api using crud principle",
   "main": "./src/index.js",
   "scripts": {
     "test": "mocha"
@@ -24,6 +24,8 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "fetch-mock": "^7.0.0-alpha.6",
     "mocha": "^5.2.0",
     "node-fetch": "^2.2.0"
