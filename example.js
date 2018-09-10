@@ -10,8 +10,8 @@ const params = {
 
 const api = new RestApi(endpoints, params);
 
-api.getEndpoint('users').read({params: {userId: '5'}});
+api.get('users').read({params: {userId: '5'}});
 
-api.addEndpoint({ name: 'tours', url: '/tours/:userId', cache: true });
-api.deleteEndpoint('tours');
+api.add({ name: 'tours', url: '/tours/:userId', cache: true });
+api.delete('tours');
 

@@ -5,7 +5,7 @@ const fetchMock  = require('fetch-mock');
 const expect     = require('chai').expect;
 
 
-describe.only('Endpoint class', () => {
+describe('Endpoint class', () => {
 	let endPoint;
 	const url = 'https://example.com/users';
 	const options = {
@@ -135,6 +135,16 @@ describe.only('Endpoint class', () => {
 		expect(request.headers.get('X-Requested-With')).to.equal('XMLHttpRequest');
 	});
 	
-	it('should describe the endpoint by .toJson()');
-	it('should cache safe requests');
+	it.skip('should cache safe requests', async () => {
+		const fake = fetchMock.sandbox();
+		
+		fake.get(url, {});
+
+		await endPoint.read();
+		await endPoint.read();
+
+		const calls = fake.calls(url, 'get')
+
+		expect(calls).to.have.lengthOf(1);
+	});
 });

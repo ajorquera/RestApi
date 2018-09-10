@@ -1,33 +1,39 @@
 const RestApi = require('../src/RestApi');
+const Endpoint = require('../src/Endpoint');
+const expect     = require('chai').expect;
 
 describe('RestApi class', () => {
-	it('should create a new instance of RestApi', () => {
-		const api = new RestApi({});
+	let api;
 
-		expect(api).toEqual(jasmine.any(RestApi));
+	beforeEach(() => {
+		api = new RestApi([
+			{name: 'name', url: '/url'}
+		]);
 	});
 
-	it('should throw an error when creating an instance with invalid params', () => {
-		expect(() => new RestApi({})).toThrowError();
+	it('should create a new instance of RestApi', () => {
+		expect(api).to.be.instanceOf(RestApi);
 	});
 
 	it('should get an endpoint', () => {
-		api.get('name');
-	});
+		const endPoint = api.get('name');
 
+		expect(Endpoint.name).to.be.equal('Endpoint');
+	});
 	
 	it('should create a new endpoint', () => {
-		api.addEndpoint(); 
+		api.add({name: 'other', url: '/more'}); 
+
+		const endPoint = api.get('other');
+		expect(Endpoint.name).to.be.equal('Endpoint');
 	});
 
 	it('should delete an endpoint', () => {
-		api.deleteEndpoint('name')
-	});
+		api.delete('name')
 
-	it('should describe the api', () => {
-		api.toJson();
-	});
+		const endPoint = api.get('name');
 
-	it('should describe the api by .toJson()');
+		expect(endPoint).to.be.undefined;
+	});
 });
 

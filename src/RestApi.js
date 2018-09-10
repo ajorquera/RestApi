@@ -1,4 +1,3 @@
-
 const Endpoint = require('./Endpoint');
 
 class RestApi {
@@ -8,14 +7,14 @@ class RestApi {
 
 	constructor(endPoints, params) {
 		this.endPoints = new Map();
-		this._params = params;
+		this._params = params || {};
 		
-		endPoints.forEach(endPoint => this.addEndpoint(endPoint))
+		this.add(endPoints);
 	}
 
 	add(endPoint) {
 		if(Array.isArray(endPoint)) {
-			endPoint.forEach(this._addEndpoint);
+			endPoint.forEach(this._addEndpoint.bind(this));
 		} else {
 			this._addEndpoint(endPoint);
 		}	
@@ -48,7 +47,7 @@ class RestApi {
 			args.url = this._params.urlPrefix + args.url;
 		}
 
-		this.endPoints.set(args.name, new Endpoint(args));s
+		this.endPoints.set(args.name, new Endpoint(args));
 	}
 }
 
