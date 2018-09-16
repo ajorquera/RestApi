@@ -1,4 +1,5 @@
 # rest-api
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/10289bc3dc1e462ab46c877d0356b022)](https://app.codacy.com/app/jorquera.ad/rest-client?utm_source=github.com&utm_medium=referral&utm_content=ajorquera/rest-client&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.org/ajorquera/RestApi.svg?branch=master)](https://travis-ci.org/ajorquera/RestApi)
 
 Restful client that follows CRUD principle. Uses fetch underneath
